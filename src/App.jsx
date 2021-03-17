@@ -28,17 +28,19 @@ const initialState = {
   input: '',
   imageUrl: '',
   boxes: [],
-  route: 'home',
-  // route: 'signin',
-  isSignedIn: true,
-  // isSignedIn: false,
+  // route: 'home',
+  route: 'signin',
+  // isSignedIn: true,
+  isSignedIn: false,
   isProfileOpen: false,
   user: {
     id: '',
     name: '',
     email: '',
     entries: 0,
-    joined: ''
+    joined: '',
+    pet: '',
+    age: ''
   }
 }
 
@@ -129,7 +131,7 @@ class App extends Component {
   };
 
 render() {
-    const { isSignedIn, imageUrl, route, boxes, isProfileOpen } = this.state;
+    const { isSignedIn, imageUrl, route, boxes, isProfileOpen, user} = this.state;
     return (
       <div className="App">
         <Particles className='particles'
@@ -145,6 +147,8 @@ render() {
             <Profile
               isProfileOpen={isProfileOpen}
               toggleModal={this.toggleModal}
+              loadUser={this.loadUser}
+              user={user}
             />
           </Modal>
         }
